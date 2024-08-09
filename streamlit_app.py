@@ -1,7 +1,7 @@
 import streamlit as st
 
-# Adding a tropical background photo
-st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvMPjkvIpGCKu98eeCCdXVKSYrVaZMn_mlKuy3wspy23FYvydM&s", use_column_width=True)
+# Embedding the YouTube video
+st.video("https://www.youtube.com/watch?v=es4x5R-rV9s")
 # Engaging App Introduction
 st.title("Welcome to the Cloud Adventure: Your CSP Suggestion Tool!")
 
