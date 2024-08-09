@@ -77,56 +77,21 @@ Let’s take a closer look at what you currently have on the cloud and what you 
 This will help us suggest the best CSP options tailored to your needs.
 """)
 
-# Type of Assets - using radio buttons for primary focus (each asset group)
-st.subheader("5. What Types of Assets Do You Primarily Have on the Cloud?")
+# Type of Assets - Radio buttons for a single choice
+st.subheader("5. What Is the Most Significant Type of Asset You Have on the Cloud?")
 primary_asset = st.radio(
     "Select the most significant type of asset your company has on the cloud:",
     ["Data Storage", "Applications", "Databases", "Development Tools", "Other"]
 )
 
-# Additional assets (optional, using checkboxes to allow multiple selections)
-st.markdown("Do you have any other types of assets on the cloud? Select all that apply:")
-additional_assets = []
-if st.checkbox("Data Storage"):
-    additional_assets.append("Data Storage")
-if st.checkbox("Applications"):
-    additional_assets.append("Applications")
-if st.checkbox("Databases"):
-    additional_assets.append("Databases")
-if st.checkbox("Development Tools"):
-    additional_assets.append("Development Tools")
-if st.checkbox("Other"):
-    additional_assets.append("Other")
-
-# Priorities in Selecting a CSP - using radio buttons for primary priority
+# Priorities in Selecting a CSP - Radio buttons for a single top priority
 st.subheader("6. What Is Your Top Priority When Selecting a CSP?")
 primary_priority = st.radio(
     "Select your company’s top priority when choosing a CSP:",
     ["Performance", "Compliance", "Support", "Scalability", "Cost Efficiency", "Security", "Innovation"]
 )
 
-# Additional priorities (optional, using checkboxes to allow multiple selections)
-st.markdown("Do you have any other priorities? Select all that apply:")
-additional_priorities = []
-if st.checkbox("Performance"):
-    additional_priorities.append("Performance")
-if st.checkbox("Compliance"):
-    additional_priorities.append("Compliance")
-if st.checkbox("Support"):
-    additional_priorities.append("Support")
-if st.checkbox("Scalability"):
-    additional_priorities.append("Scalability")
-if st.checkbox("Cost Efficiency"):
-    additional_priorities.append("Cost Efficiency")
-if st.checkbox("Security"):
-    additional_priorities.append("Security")
-if st.checkbox("Innovation"):
-    additional_priorities.append("Innovation")
-
 # Summary of Selections
 st.markdown("### 🌟 Here's a summary of your input:")
 st.write(f"**Primary Asset on the Cloud:** {primary_asset}")
-st.write(f"**Additional Assets on the Cloud:** {', '.join(additional_assets) if additional_assets else 'None selected.'}")
 st.write(f"**Top Priority in CSP Selection:** {primary_priority}")
-st.write(f"**Additional Priorities in CSP Selection:** {', '.join(additional_priorities) if additional_priorities else 'None selected.'}")
-
