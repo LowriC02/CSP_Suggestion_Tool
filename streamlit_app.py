@@ -1,24 +1,23 @@
 import streamlit as st
 
-# App Introduction
-st.title("Cloud Migration CSP Suggestion Tool")
-st.markdown("""
-Welcome to the Cloud Migration CSP Suggestion Tool. This tool is designed to assist companies in evaluating 
-and selecting the most suitable Cloud Service Provider (CSP) based on a variety of factors including 
-industry requirements, geographical location, and specific cloud migration challenges.
+# Fun and Engaging App Introduction
+st.title("Welcome to the Cloud Adventure: Your CSP Suggestion Tool!")
 
-Please provide the following information to get started:
+st.markdown("""
+Embark on your cloud migration journey with us! Whether you're scaling the peaks of performance or navigating the valleys of cost efficiency, 
+this tool is your trusty guide. Let's chart the best course to your perfect Cloud Service Provider (CSP) based on your unique needs and challenges. 
+Ready to get started? Let's go!
 """)
 
-# Questionnaire Section 1: Industry and Location
-st.header("1. Company Information")
+# Questionnaire Section 1: Company Information
+st.header("1. Tell Us About Your Company")
 
-# Industry Type Input
-industry = st.selectbox("What type of industry does your company operate in?", 
-                        ["Healthcare", "Finance", "Retail", "Manufacturing", "Technology", "Other"])
+# Industry Type Input - Free text input
+industry = st.text_input("First, what industry are you in?")
 
-# Location Input
-location = st.text_input("Where is your company primarily located? (e.g., City, Country)")
+# Location Input - Predefined options (Global and Continents)
+location = st.radio("Where does your company operate?", 
+                    ["Global", "Africa", "Asia", "Europe", "North America", "South America", "Australia"])
 
 # Display inputs
 st.write("**Industry:**", industry)
