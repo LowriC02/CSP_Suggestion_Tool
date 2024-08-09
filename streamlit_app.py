@@ -213,6 +213,6 @@ ready = st.radio(
 
 # Conditional message based on readiness
 if ready == "Yes, I’m ready!":
-    st.markdown("### 🏝️ All systems go! Your tropical cloud journey awaits. Best of luck!")
+    st.markdown("### 🏝️ The Adventure has been planned! Your tropical cloud journey awaits. Best of luck!")
 else:
     st.markdown("### 🌴 No worries! Take your time to review and adjust your plan before setting off.")
