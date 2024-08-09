@@ -191,16 +191,16 @@ st.subheader("10. Our CSP Recommendation")
 # Decision Logic for CSP Recommendation
 if "Security" in priorities or "Compliance" in priorities:
     csps.append("Microsoft Azure")
-    st.markdown("### 🛡️ We recommend **Microsoft Azure** for its strong focus on enterprise security and compliance features.")
+    st.markdown("### 🛡️ We recommend **[Microsoft Azure](https://azure.microsoft.com/)** for its strong focus on enterprise security and compliance features.")
 elif "AI and Machine Learning Capabilities" in desired_features or "Data Analytics" in priorities:
     csps.append("Google Cloud Platform (GCP)")
-    st.markdown("### 🤖 We recommend **Google Cloud Platform (GCP)** for its industry-leading AI, machine learning, and data analytics capabilities.")
+    st.markdown("### 🤖 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its industry-leading AI, machine learning, and data analytics capabilities.")
 elif "Scalability" in priorities or "Infrastructure" in assets:
     csps.append("Amazon Web Services (AWS)")
-    st.markdown("### 🌐 We recommend **Amazon Web Services (AWS)** for its highly scalable and flexible infrastructure.")
+    st.markdown("### 🌐 We recommend **[Amazon Web Services (AWS)](https://aws.amazon.com/)** for its highly scalable and flexible infrastructure.")
 elif "Cost Efficiency" in priorities:
     csps.append("Google Cloud Platform (GCP)")
-    st.markdown("### 💰 We recommend **Google Cloud Platform (GCP)** for its competitive pricing and strong cost management tools.")
+    st.markdown("### 💰 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its competitive pricing and strong cost management tools.")
 else:
     st.markdown("### 🌍 Based on your preferences, we suggest exploring each CSP further to find the best match for your needs.")
 
