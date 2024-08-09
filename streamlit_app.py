@@ -17,8 +17,6 @@ industry = st.radio("What industry does your company operate in?",
 location = st.radio("Where does your company operate?", 
                     ["Global", "Africa", "Asia", "Europe", "North America", "South America", "Australia"])
 
-# Optional: Add another tropical-themed image or icon
-st.image("https://example.com/tropical-icon.png", width=100)
 
 
 # Continuing the adventure with a new section
@@ -67,4 +65,52 @@ st.markdown("### 🌟 Here's a quick look at your preferences:")
 st.write(f"**Cloud Situation:** {cloud_situation}")
 st.write(f"**Risk Appetite:** {risk_appetite}")
 st.write(f"**Cost Attitude:** {cost_attitude}")
+
+import streamlit as st
+
+# Introducing the next section
+st.header("💻 Digging Deeper into Your Cloud Assets and Priorities")
+
+st.markdown("""
+Let’s take a closer look at what you currently have on the cloud and what you consider most important when selecting a Cloud Service Provider (CSP). 
+This will help us suggest the best CSP options tailored to your needs.
+""")
+
+# Type of Assets
+st.subheader("5. What Types of Assets Do You Have on the Cloud?")
+assets = []
+if st.checkbox("Data Storage"):
+    assets.append("Data Storage")
+if st.checkbox("Applications"):
+    assets.append("Applications")
+if st.checkbox("Databases"):
+    assets.append("Databases")
+if st.checkbox("Development Tools"):
+    assets.append("Development Tools")
+if st.checkbox("Other"):
+    assets.append("Other")
+
+# Priorities in Selecting a CSP
+st.subheader("6. What Are Your Top Priorities When Selecting a CSP?")
+priorities = []
+if st.checkbox("Performance"):
+    priorities.append("Performance")
+if st.checkbox("Compliance"):
+    priorities.append("Compliance")
+if st.checkbox("Support"):
+    priorities.append("Support")
+if st.checkbox("Scalability"):
+    priorities.append("Scalability")
+if st.checkbox("Cost Efficiency"):
+    priorities.append("Cost Efficiency")
+if st.checkbox("Security"):
+    priorities.append("Security")
+if st.checkbox("Innovation"):
+    priorities.append("Innovation")
+
+# Summary of Selections
+st.markdown("### 🌟 Here's a summary of your input:")
+st.write(f"**Assets on the Cloud:** {', '.join(assets) if assets else 'No assets selected.'}")
+st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
+
 
