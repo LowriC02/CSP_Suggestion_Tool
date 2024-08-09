@@ -74,8 +74,8 @@ As we climb higher, let's identify the key assets and priorities that will guide
 """)
 
 # Type of Assets - Checkboxes for multiple selections
-st.subheader("5. What Types of Assets Do You Have on the Cloud?")
 assets = []
+st.subheader("5. What Types of Assets Do You Have on the Cloud?")
 if st.checkbox("Data Storage", key="asset_datastorage"):
     assets.append("Data Storage")
 if st.checkbox("Applications", key="asset_applications"):
@@ -88,8 +88,8 @@ if st.checkbox("Other", key="asset_other"):
     assets.append("Other")
 
 # Priorities in Selecting a CSP - Checkboxes for multiple selections
-st.subheader("6. What Are Your Top Priorities When Selecting a CSP?")
 priorities = []
+st.subheader("6. What Are Your Top Priorities When Selecting a CSP?")
 if st.checkbox("Performance", key="priority_performance"):
     priorities.append("Performance")
 if st.checkbox("Compliance", key="priority_compliance"):
@@ -122,8 +122,8 @@ Let’s uncover your company’s security preferences and map out the features y
 """)
 
 # Security Preferences - Checkboxes for multiple selections
-st.subheader("7. What Security Measures Are Most Important to You?")
 security_preferences = []
+st.subheader("7. What Security Measures Are Most Important to You?")
 if st.checkbox("Advanced Encryption", key="security_encryption"):
     security_preferences.append("Advanced Encryption")
 if st.checkbox("Multi-Factor Authentication (MFA)", key="security_mfa"):
@@ -138,8 +138,8 @@ if st.checkbox("Compliance with Industry Standards (e.g., GDPR, ISO 27001)", key
     security_preferences.append("Compliance with Industry Standards (e.g., GDPR, ISO 27001)")
 
 # Desired Features in a CSP - Checkboxes for multiple selections
-st.subheader("8. What Features Are You Looking For in a CSP?")
 desired_features = []
+st.subheader("8. What Features Are You Looking For in a CSP?")
 if st.checkbox("High Availability and Uptime Guarantees", key="features_availability"):
     desired_features.append("High Availability and Uptime Guarantees")
 if st.checkbox("24/7 Customer Support", key="features_support"):
@@ -182,25 +182,24 @@ st.write(f"**CSP Features:** {', '.join(desired_features) if desired_features el
 st.markdown("### 🌩️ Cloud Companions")
 st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
 
+# Initialize csps list to track recommendations
+csps = []
+
 # Suggesting the Best CSP Based on Selections
 st.subheader("10. Our CSP Recommendation")
 
 # Decision Logic for CSP Recommendation
 if "Security" in priorities or "Compliance" in priorities:
-    if "Microsoft Azure" not in csps:
-        csps.append("Microsoft Azure")
+    csps.append("Microsoft Azure")
     st.markdown("### 🛡️ We recommend **Microsoft Azure** for its strong focus on enterprise security and compliance features.")
 elif "AI and Machine Learning Capabilities" in desired_features or "Data Analytics" in priorities:
-    if "Google Cloud Platform (GCP)" not in csps:
-        csps.append("Google Cloud Platform (GCP)")
+    csps.append("Google Cloud Platform (GCP)")
     st.markdown("### 🤖 We recommend **Google Cloud Platform (GCP)** for its industry-leading AI, machine learning, and data analytics capabilities.")
 elif "Scalability" in priorities or "Infrastructure" in assets:
-    if "Amazon Web Services (AWS)" not in csps:
-        csps.append("Amazon Web Services (AWS)")
+    csps.append("Amazon Web Services (AWS)")
     st.markdown("### 🌐 We recommend **Amazon Web Services (AWS)** for its highly scalable and flexible infrastructure.")
 elif "Cost Efficiency" in priorities:
-    if "Google Cloud Platform (GCP)" not in csps:
-        csps.append("Google Cloud Platform (GCP)")
+    csps.append("Google Cloud Platform (GCP)")
     st.markdown("### 💰 We recommend **Google Cloud Platform (GCP)** for its competitive pricing and strong cost management tools.")
 else:
     st.markdown("### 🌍 Based on your preferences, we suggest exploring each CSP further to find the best match for your needs.")
