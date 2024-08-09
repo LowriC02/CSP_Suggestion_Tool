@@ -95,4 +95,3 @@ priorities = st.multiselect(
 st.markdown("### 🌟 Here's a summary of your input:")
 st.write(f"**Assets on the Cloud:** {', '.join(assets) if assets else 'No assets selected.'}")
 st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
-
