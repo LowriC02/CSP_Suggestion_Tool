@@ -67,33 +67,25 @@ st.write(f"**Risk Appetite:** {risk_appetite}")
 st.write(f"**Cost Attitude:** {cost_attitude}")
 
 
+import streamlit as st
+
 # Introducing the next section
-st.header("💻 Digging Deeper into Your Cloud Assets and Experience")
+st.header("💻 Digging Deeper into Your Cloud Assets and Priorities")
 
 st.markdown("""
-Let’s take a closer look at what you currently have on the cloud and how your previous experiences have shaped your journey so far. 
-This will help us better understand your needs and suggest the best CSP for your company.
+Let’s take a closer look at what you currently have on the cloud and what you consider most important when selecting a Cloud Service Provider (CSP). 
+This will help us suggest the best CSP options tailored to your needs.
 """)
 
 # Type of Assets
 st.subheader("5. What Types of Assets Do You Have on the Cloud?")
 assets = st.multiselect(
-    "Select all that apply:",
+    "Select the types of assets you currently have on the cloud:",
     ["Data Storage", "Applications", "Databases", "Development Tools", "Other"]
 )
 
-# Prior Experience of Cloud Migration
-st.subheader("6. Have You Previously Migrated to the Cloud?")
-migration_experience = st.radio(
-    "Tell us about your past experience with cloud migration:",
-    [
-        "Yes, we've done it before.",
-        "No, this is our first time."
-    ]
-)
-
 # Priorities in Selecting a CSP
-st.subheader("7. What Are Your Top Priorities When Selecting a CSP?")
+st.subheader("6. What Are Your Top Priorities When Selecting a CSP?")
 priorities = st.multiselect(
     "Choose the aspects that are most important to you:",
     ["Performance", "Compliance", "Support", "Scalability", "Cost Efficiency", "Security", "Innovation"]
@@ -101,6 +93,6 @@ priorities = st.multiselect(
 
 # Summary of Selections
 st.markdown("### 🌟 Here's a summary of your input:")
-st.write(f"**Assets on the Cloud:** {', '.join(assets)}")
-st.write(f"**Previous Migration Experience:** {migration_experience}")
-st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities)}")
+st.write(f"**Assets on the Cloud:** {', '.join(assets) if assets else 'No assets selected.'}")
+st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
+
