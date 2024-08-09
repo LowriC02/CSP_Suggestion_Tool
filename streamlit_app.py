@@ -160,68 +160,6 @@ st.markdown("### 🌟 Here's a summary of your security preferences and feature 
 st.write(f"**Security Measures:** {', '.join(security_preferences) if security_preferences else 'No security measures selected.'}")
 st.write(f"**Desired CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'}")
 
-# 🚶‍♂️🚶‍♀️ Choosing Your Cloud Companions
-st.header("🚶‍♂️🚶‍♀️ Choosing Your Cloud Companions")
-
-st.markdown("""
-Every great adventure needs trusted companions. Based on the journey you've mapped out, let’s explore the Cloud Service Providers (CSPs) that could be your ideal allies. 
-Select the CSPs you’re considering or let us suggest some based on your preferences.
-""")
-
-# Information about AWS, Azure, and GCP
-st.subheader("Learn About Your Potential Companions")
-
-st.markdown("### 🌩️ Amazon Web Services (AWS)")
-st.markdown("""
-- **Overview**: AWS is the most comprehensive and widely adopted cloud platform in the world, offering over 200 fully featured services from data centres globally.
-- **Strengths**:
-  - Extensive global network with a vast array of services.
-  - Strong developer community and ecosystem.
-  - Highly scalable and flexible infrastructure.
-  - Advanced AI and machine learning capabilities.
-  - Deep security and compliance support.
-- **Use Cases**: Ideal for companies needing robust infrastructure, wide-ranging services, and advanced AI/ML tools.
-""")
-
-st.markdown("### ☁️ Microsoft Azure")
-st.markdown("""
-- **Overview**: Microsoft Azure is a leading cloud service provider offering a range of solutions including IaaS, PaaS, and SaaS. Azure is integrated with Microsoft's enterprise software, making it a strong choice for businesses already using Microsoft products.
-- **Strengths**:
-  - Seamless integration with Microsoft tools like Office 365, Dynamics 365, and Active Directory.
-  - Strong enterprise focus with extensive hybrid cloud capabilities.
-  - Advanced analytics and data solutions, including Azure Synapse Analytics.
-  - Comprehensive AI and machine learning tools.
-  - Wide support for open-source technologies and platforms.
-- **Use Cases**: Best suited for enterprises already embedded in the Microsoft ecosystem, and those looking for hybrid cloud solutions.
-""")
-
-st.markdown("### ☀️ Google Cloud Platform (GCP)")
-st.markdown("""
-- **Overview**: GCP offers a range of cloud services focused on data analytics, AI, and machine learning. It is known for its data management and analytics capabilities, leveraging Google’s experience in handling large-scale data.
-- **Strengths**:
-  - Industry-leading data analytics and machine learning capabilities.
-  - Strong emphasis on open source and multi-cloud environments.
-  - Integration with Google’s other services, such as BigQuery for data analytics.
-  - Competitive pricing for compute and storage services.
-  - High-performance networking and security infrastructure.
-- **Use Cases**: Ideal for organizations focused on big data, analytics, and AI/ML projects.
-""")
-
-# Suggested CSPs - Based on user input, we'll suggest CSPs here
-st.subheader("9. Which Cloud Service Providers Are You Considering?")
-csps = []
-if st.checkbox("Amazon Web Services (AWS)", key="csp_aws"):
-    csps.append("Amazon Web Services (AWS)")
-if st.checkbox("Microsoft Azure", key="csp_azure"):
-    csps.append("Microsoft Azure")
-if st.checkbox("Google Cloud Platform (GCP)", key="csp_gcp"):
-    csps.append("Google Cloud Platform (GCP)")
-
-
-# Summary of Selections
-st.markdown("### 🌟 Here's a summary of your cloud companions:")
-st.write(f"**Selected CSPs:** {', '.join(csps) if csps else 'No CSPs selected.'}")
-
 # 🏝️ Wrapping Up Your Tropical Cloud Adventure
 st.header("🏝️ Wrapping Up Your Tropical Cloud Adventure")
 
@@ -231,7 +169,7 @@ Review your selections and make sure you have all the tools and companions you n
 """)
 
 # Final Review of Selections
-st.subheader("14. Reviewing Your Selections")
+st.subheader("9. Reviewing Your Selections")
 st.markdown("### 🛠️ Tools & Resources")
 st.write(f"**Key Assets on the Cloud:** {', '.join(assets) if assets else 'No assets selected.'}")
 
@@ -242,29 +180,33 @@ st.markdown("### 📦 Desired Features")
 st.write(f"**CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'}")
 
 st.markdown("### 🌩️ Cloud Companions")
-st.write(f"**Selected CSPs:** {', '.join(csps) if csps else 'No CSPs selected.'}")
-
-# CSP Websites
-if "Amazon Web Services (AWS)" in csps:
-    st.markdown("[Visit AWS](https://aws.amazon.com/)")
-if "Microsoft Azure" in csps:
-    st.markdown("[Visit Microsoft Azure](https://azure.microsoft.com/)")
-if "Google Cloud Platform (GCP)" in csps:
-    st.markdown("[Visit Google Cloud](https://cloud.google.com/)")
+st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
 
 # Suggesting the Best CSP Based on Selections
-st.subheader("15. Our CSP Recommendation")
+st.subheader("10. Our CSP Recommendation")
+
+# Decision Logic for CSP Recommendation
 if "Security" in priorities or "Compliance" in priorities:
+    if "Microsoft Azure" not in csps:
+        csps.append("Microsoft Azure")
     st.markdown("### 🛡️ We recommend **Microsoft Azure** for its strong focus on enterprise security and compliance features.")
 elif "AI and Machine Learning Capabilities" in desired_features or "Data Analytics" in priorities:
+    if "Google Cloud Platform (GCP)" not in csps:
+        csps.append("Google Cloud Platform (GCP)")
     st.markdown("### 🤖 We recommend **Google Cloud Platform (GCP)** for its industry-leading AI, machine learning, and data analytics capabilities.")
 elif "Scalability" in priorities or "Infrastructure" in assets:
+    if "Amazon Web Services (AWS)" not in csps:
+        csps.append("Amazon Web Services (AWS)")
     st.markdown("### 🌐 We recommend **Amazon Web Services (AWS)** for its highly scalable and flexible infrastructure.")
+elif "Cost Efficiency" in priorities:
+    if "Google Cloud Platform (GCP)" not in csps:
+        csps.append("Google Cloud Platform (GCP)")
+    st.markdown("### 💰 We recommend **Google Cloud Platform (GCP)** for its competitive pricing and strong cost management tools.")
 else:
-    st.markdown("### 🌍 Based on your preferences, all three CSPs—**AWS, Azure, and GCP**—could be good fits. Consider exploring each further to find the best match for your needs.")
+    st.markdown("### 🌍 Based on your preferences, we suggest exploring each CSP further to find the best match for your needs.")
 
 # Final Confirmation
-st.subheader("16. Are You Ready to Embark?")
+st.subheader("11. Are You Ready to Embark?")
 ready = st.radio(
     "Do you feel ready to embark on your tropical cloud migration adventure?",
     ["Yes, I’m ready!", "I need to make some adjustments."]
