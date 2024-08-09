@@ -1,151 +1,113 @@
 import streamlit as st
 import pandas as pd
-import math
-from pathlib import Path
 
-# Set the title and favicon that appear in the Browser's tab bar.
-st.set_page_config(
-    page_title='GDP dashboard',
-    page_icon=':earth_americas:', # This is an emoji shortcode. Could be a URL too.
-)
-
-# -----------------------------------------------------------------------------
-# Declare some useful functions.
-
+# Load the questionnaire data
 @st.cache_data
-def get_gdp_data():
-    """Grab GDP data from a CSV file.
+def load_questionnaire_data():
+    return pd.read_excel("/mnt/data/Cloud Migration Tool Optimisation and Benefits Evaluation(1-9).xlsx")
 
-    This uses caching to avoid having to read the file every time. If we were
-    reading from an HTTP endpoint instead of a file, it's a good idea to set
-    a maximum age to the cache with the TTL argument: @st.cache_data(ttl='1d')
-    """
+questionnaire_data = load_questionnaire_data()
 
-    # Instead of a CSV on disk, you could read from an HTTP endpoint here too.
-    DATA_FILENAME = Path(__file__).parent/'data/gdp_data.csv'
-    raw_gdp_df = pd.read_csv(DATA_FILENAME)
+# Title and Sidebar
+st.title("Cloud Migration Recommendation Tool")
+st.sidebar.title("Navigation")
+st.sidebar.markdown("Select a section to begin.")
 
-    MIN_YEAR = 1960
-    MAX_YEAR = 2022
+# User Input Section
+if 'user_input' not in st.session_state:
+    st.session_state['user_input'] = {}
 
-    # The data above has columns like:
-    # - Country Name
-    # - Country Code
-    # - [Stuff I don't care about]
-    # - GDP for 1960
-    # - GDP for 1961
-    # - GDP for 1962
-    # - ...
-    # - GDP for 2022
-    #
-    # ...but I want this instead:
-    # - Country Name
-    # - Country Code
-    # - Year
-    # - GDP
-    #
-    # So let's pivot all those year-columns into two: Year and GDP
-    gdp_df = raw_gdp_df.melt(
-        ['Country Code'],
-        [str(x) for x in range(MIN_YEAR, MAX_YEAR + 1)],
-        'Year',
-        'GDP',
+def get_user_input():
+    st.header("Company and Migration Details")
+
+    industry = st.selectbox("Select Industry", ["Healthcare", "Finance", "Retail", "Technology", "Other"])
+    location = st.selectbox("Select Location", ["North America", "Europe", "Asia", "Other"])
+    current_cloud_usage = st.selectbox("Current Cloud Usage", ["None", "Partial (Hybrid)", "Full Cloud Deployment"])
+    critical_assets = st.multiselect("Select Critical Assets", ["Data Storage", "Applications", "Databases", "Development Tools", "Other"])
+
+    st.session_state['user_input'] = {
+        "industry": industry,
+        "location": location,
+        "current_cloud_usage": current_cloud_usage,
+        "critical_assets": critical_assets,
+    }
+
+    st.success("Company and migration details saved!")
+
+if st.sidebar.button("Enter Company Details"):
+    get_user_input()
+
+# User Preferences Section
+if 'user_preferences' not in st.session_state:
+    st.session_state['user_preferences'] = {}
+
+def get_user_preferences():
+    st.header("User Preferences")
+
+    cost_attitude = st.selectbox(
+        "What is your attitude toward cost?",
+        ["Cost is a primary concern", "Cost is important but secondary to security", "Willing to pay more for the best service"]
     )
 
-    # Convert years from string to integers
-    gdp_df['Year'] = pd.to_numeric(gdp_df['Year'])
+    risk_appetite = st.selectbox(
+        "What is your risk appetite?",
+        ["Low", "Medium", "High"]
+    )
 
-    return gdp_df
+    st.session_state['user_preferences'] = {
+        "cost_attitude": cost_attitude,
+        "risk_appetite": risk_appetite,
+    }
 
-gdp_df = get_gdp_data()
+    st.success("User preferences saved!")
 
-# -----------------------------------------------------------------------------
-# Draw the actual page
+if st.sidebar.button("Enter User Preferences"):
+    get_user_preferences()
 
-# Set the title that appears at the top of the page.
-'''
-# :earth_americas: GDP dashboard
+# Risk Management and Compliance Recommendations
+def get_risk_management_recommendations():
+    st.header("Risk Management and Compliance Recommendations")
 
-Browse GDP data from the [World Bank Open Data](https://data.worldbank.org/) website. As you'll
-notice, the data only goes to 2022 right now, and datapoints for certain years are often missing.
-But it's otherwise a great (and did I mention _free_?) source of data.
-'''
+    industry = st.session_state['user_input'].get("industry")
+    location = st.session_state['user_input'].get("location")
+    
+    if industry == "Healthcare" or location == "Europe":
+        st.write("Given your industry/location, consider strict adherence to GDPR and HIPAA regulations.")
+        st.write("Ensure that the selected CSP provides robust encryption and regular compliance audits.")
 
-# Add some spacing
-''
-''
+    if "Security" in st.session_state['evaluation_criteria'] and st.session_state['evaluation_criteria']["Security"]:
+        st.write("Focus on CSPs that offer advanced security features like end-to-end encryption and multi-factor authentication.")
 
-min_value = gdp_df['Year'].min()
-max_value = gdp_df['Year'].max()
+if st.sidebar.button("Get Risk Management Recommendations"):
+    get_risk_management_recommendations()
 
-from_year, to_year = st.slider(
-    'Which years are you interested in?',
-    min_value=min_value,
-    max_value=max_value,
-    value=[min_value, max_value])
+# Final CSP Recommendation
+def final_csp_recommendation():
+    st.header("Final CSP Recommendation")
+    
+    cost_attitude = st.session_state['user_preferences'].get("cost_attitude")
+    risk_appetite = st.session_state['user_preferences'].get("risk_appetite")
+    
+    # Filter the questionnaire data based on user preferences
+    filtered_data = questionnaire_data.copy()
+    
+    if cost_attitude == "Cost is a primary concern":
+        filtered_data = filtered_data[filtered_data['Cost_Sensitivity'] == 'High']
+    elif cost_attitude == "Willing to pay more for the best service":
+        filtered_data = filtered_data[filtered_data['Cost_Sensitivity'] == 'Low']
+    
+    if risk_appetite == "Low":
+        filtered_data = filtered_data[filtered_data['Risk_Apetite'] == 'Low']
+    elif risk_appetite == "High":
+        filtered_data = filtered_data[filtered_data['Risk_Apetite'] == 'High']
+    
+    # Display the filtered recommendation
+    if not filtered_data.empty:
+        recommended_csp = filtered_data.iloc[0]['Recommended_CSP']
+        st.write(f"Based on your preferences, we recommend: **{recommended_csp}**")
+    else:
+        st.write("No suitable CSP found based on the selected criteria. Consider adjusting your preferences.")
 
-countries = gdp_df['Country Code'].unique()
+if st.sidebar.button("Get Final Recommendation"):
+    final_csp_recommendation()
 
-if not len(countries):
-    st.warning("Select at least one country")
-
-selected_countries = st.multiselect(
-    'Which countries would you like to view?',
-    countries,
-    ['DEU', 'FRA', 'GBR', 'BRA', 'MEX', 'JPN'])
-
-''
-''
-''
-
-# Filter the data
-filtered_gdp_df = gdp_df[
-    (gdp_df['Country Code'].isin(selected_countries))
-    & (gdp_df['Year'] <= to_year)
-    & (from_year <= gdp_df['Year'])
-]
-
-st.header('GDP over time', divider='gray')
-
-''
-
-st.line_chart(
-    filtered_gdp_df,
-    x='Year',
-    y='GDP',
-    color='Country Code',
-)
-
-''
-''
-
-
-first_year = gdp_df[gdp_df['Year'] == from_year]
-last_year = gdp_df[gdp_df['Year'] == to_year]
-
-st.header(f'GDP in {to_year}', divider='gray')
-
-''
-
-cols = st.columns(4)
-
-for i, country in enumerate(selected_countries):
-    col = cols[i % len(cols)]
-
-    with col:
-        first_gdp = first_year[gdp_df['Country Code'] == country]['GDP'].iat[0] / 1000000000
-        last_gdp = last_year[gdp_df['Country Code'] == country]['GDP'].iat[0] / 1000000000
-
-        if math.isnan(first_gdp):
-            growth = 'n/a'
-            delta_color = 'off'
-        else:
-            growth = f'{last_gdp / first_gdp:,.2f}x'
-            delta_color = 'normal'
-
-        st.metric(
-            label=f'{country} GDP',
-            value=f'{last_gdp:,.0f}B',
-            delta=growth,
-            delta_color=delta_color
-        )
