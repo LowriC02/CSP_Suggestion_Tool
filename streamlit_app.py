@@ -76,35 +76,35 @@ As we climb higher, let's identify the key assets and priorities that will guide
 # Type of Assets - Checkboxes for multiple selections
 st.subheader("5. What Types of Assets Do You Have on the Cloud?")
 assets = []
-if st.checkbox("Data Storage"):
+if st.checkbox("Data Storage", key="asset_datastorage"):
     assets.append("Data Storage")
-if st.checkbox("Applications"):
+if st.checkbox("Applications", key="asset_applications"):
     assets.append("Applications")
-if st.checkbox("Databases"):
+if st.checkbox("Databases", key="asset_databases"):
     assets.append("Databases")
-if st.checkbox("Development Tools"):
+if st.checkbox("Development Tools", key="asset_devtools"):
     assets.append("Development Tools")
-if st.checkbox("Other"):
+if st.checkbox("Other", key="asset_other"):
     assets.append("Other")
 
 # Priorities in Selecting a CSP - Checkboxes for multiple selections
 st.subheader("6. What Are Your Top Priorities When Selecting a CSP?")
 priorities = []
-if st.checkbox("Performance"):
+if st.checkbox("Performance", key="priority_performance"):
     priorities.append("Performance")
-if st.checkbox("Compliance"):
+if st.checkbox("Compliance", key="priority_compliance"):
     priorities.append("Compliance")
-if st.checkbox("Support"):
+if st.checkbox("Support", key="priority_support"):
     priorities.append("Support")
-if st.checkbox("Scalability"):
+if st.checkbox("Scalability", key="priority_scalability"):
     priorities.append("Scalability")
-if st.checkbox("Cost Efficiency"):
+if st.checkbox("Cost Efficiency", key="priority_cost_efficiency"):
     priorities.append("Cost Efficiency")
-if st.checkbox("Security"):
+if st.checkbox("Security", key="priority_security"):
     priorities.append("Security")
-if st.checkbox("Innovation"):
+if st.checkbox("Innovation", key="priority_innovation"):
     priorities.append("Innovation")
-if st.checkbox("Other"):
+if st.checkbox("Other", key="priority_other"):
     priorities.append("Other")
 
 # Summary of Selections
@@ -124,35 +124,35 @@ Let’s uncover your company’s security preferences and map out the features y
 # Security Preferences - Checkboxes for multiple selections
 st.subheader("7. What Security Measures Are Most Important to You?")
 security_preferences = []
-if st.checkbox("Advanced Encryption"):
+if st.checkbox("Advanced Encryption", key="security_encryption"):
     security_preferences.append("Advanced Encryption")
-if st.checkbox("Multi-Factor Authentication (MFA)"):
+if st.checkbox("Multi-Factor Authentication (MFA)", key="security_mfa"):
     security_preferences.append("Multi-Factor Authentication (MFA)")
-if st.checkbox("Regular Security Audits"):
+if st.checkbox("Regular Security Audits", key="security_audits"):
     security_preferences.append("Regular Security Audits")
-if st.checkbox("Data Loss Prevention (DLP)"):
+if st.checkbox("Data Loss Prevention (DLP)", key="security_dlp"):
     security_preferences.append("Data Loss Prevention (DLP)")
-if st.checkbox("Intrusion Detection and Prevention"):
+if st.checkbox("Intrusion Detection and Prevention", key="security_intrusion"):
     security_preferences.append("Intrusion Detection and Prevention")
-if st.checkbox("Compliance with Industry Standards (e.g., GDPR, ISO 27001)"):
+if st.checkbox("Compliance with Industry Standards (e.g., GDPR, ISO 27001)", key="security_compliance"):
     security_preferences.append("Compliance with Industry Standards (e.g., GDPR, ISO 27001)")
 
 # Desired Features in a CSP - Checkboxes for multiple selections
 st.subheader("8. What Features Are You Looking For in a CSP?")
 desired_features = []
-if st.checkbox("High Availability and Uptime Guarantees"):
+if st.checkbox("High Availability and Uptime Guarantees", key="features_availability"):
     desired_features.append("High Availability and Uptime Guarantees")
-if st.checkbox("24/7 Customer Support"):
+if st.checkbox("24/7 Customer Support", key="features_support"):
     desired_features.append("24/7 Customer Support")
-if st.checkbox("Scalable Infrastructure"):
+if st.checkbox("Scalable Infrastructure", key="features_scalability"):
     desired_features.append("Scalable Infrastructure")
-if st.checkbox("Cost Management Tools"):
+if st.checkbox("Cost Management Tools", key="features_cost_management"):
     desired_features.append("Cost Management Tools")
-if st.checkbox("AI and Machine Learning Capabilities"):
+if st.checkbox("AI and Machine Learning Capabilities", key="features_ai_ml"):
     desired_features.append("AI and Machine Learning Capabilities")
-if st.checkbox("Integration with Existing Systems"):
+if st.checkbox("Integration with Existing Systems", key="features_integration"):
     desired_features.append("Integration with Existing Systems")
-if st.checkbox("Other"):
+if st.checkbox("Other", key="features_other"):
     desired_features.append("Other")
 
 # Summary of Selections
@@ -210,11 +210,11 @@ st.markdown("""
 # Suggested CSPs - Based on user input, we'll suggest CSPs here
 st.subheader("9. Which Cloud Service Providers Are You Considering?")
 csps = []
-if st.checkbox("Amazon Web Services (AWS)"):
+if st.checkbox("Amazon Web Services (AWS)", key="csp_aws"):
     csps.append("Amazon Web Services (AWS)")
-if st.checkbox("Microsoft Azure"):
+if st.checkbox("Microsoft Azure", key="csp_azure"):
     csps.append("Microsoft Azure")
-if st.checkbox("Google Cloud Platform (GCP)"):
+if st.checkbox("Google Cloud Platform (GCP)", key="csp_gcp"):
     csps.append("Google Cloud Platform (GCP)")
 
 
