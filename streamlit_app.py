@@ -9,13 +9,47 @@ or ensuring top-notch security, this tool is your trusted companion. Let’s hel
 and find the perfect Cloud Service Provider (CSP) tailored to your needs. Ready to get started? Let's dive in! 🏝️
 """)
 
-# Industry Type Input - Specific industries from the text
-industry = st.radio("What industry does your company operate in?", 
-                    ["Healthcare", "Finance", "Retail", "Manufacturing", "Technology", "Other"])
+# Industry Type Input - Multiple Choice
+st.subheader("What industries does your company operate in?")
+industries = []
+if st.checkbox("Healthcare", key="industry_healthcare"):
+    industries.append("Healthcare")
+if st.checkbox("Finance", key="industry_finance"):
+    industries.append("Finance")
+if st.checkbox("Retail", key="industry_retail"):
+    industries.append("Retail")
+if st.checkbox("Manufacturing", key="industry_manufacturing"):
+    industries.append("Manufacturing")
+if st.checkbox("Technology", key="industry_technology"):
+    industries.append("Technology")
+if st.checkbox("Other", key="industry_other"):
+    industries.append("Other")
 
-# Location Input - Predefined options (Global and Continents)
-location = st.radio("Where does your company operate?", 
-                    ["Global", "Africa", "Asia", "Europe", "North America", "South America", "Australia"])
+# Location Input - Multiple Choice
+st.subheader("Where does your company operate?")
+locations = []
+if st.checkbox("Global", key="location_global"):
+    locations.append("Global")
+if st.checkbox("Africa", key="location_africa"):
+    locations.append("Africa")
+if st.checkbox("Asia", key="location_asia"):
+    locations.append("Asia")
+if st.checkbox("Europe", key="location_europe"):
+    locations.append("Europe")
+if st.checkbox("North America", key="location_north_america"):
+    locations.append("North America")
+if st.checkbox("South America", key="location_south_america"):
+    locations.append("South America")
+if st.checkbox("Australia", key="location_australia"):
+    locations.append("Australia")
+
+# Displaying the selected choices
+st.markdown("### Selected Industries:")
+st.write(', '.join(industries) if industries else "No industries selected.")
+
+st.markdown("### Selected Locations:")
+st.write(', '.join(locations) if locations else "No locations selected.")
+
 
 
 
