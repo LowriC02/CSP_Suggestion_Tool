@@ -79,19 +79,44 @@ This will help us suggest the best CSP options tailored to your needs.
 
 # Type of Assets
 st.subheader("5. What Types of Assets Do You Have on the Cloud?")
-assets = st.multiselect(
-    "Select the types of assets you currently have on the cloud:",
-    ["Data Storage", "Applications", "Databases", "Development Tools", "Other"]
-)
+st.markdown("Select all that apply:")
+
+# Checkboxes for selecting cloud assets
+assets = []
+if st.checkbox("Data Storage"):
+    assets.append("Data Storage")
+if st.checkbox("Applications"):
+    assets.append("Applications")
+if st.checkbox("Databases"):
+    assets.append("Databases")
+if st.checkbox("Development Tools"):
+    assets.append("Development Tools")
+if st.checkbox("Other"):
+    assets.append("Other")
 
 # Priorities in Selecting a CSP
 st.subheader("6. What Are Your Top Priorities When Selecting a CSP?")
-priorities = st.multiselect(
-    "Choose the aspects that are most important to you:",
-    ["Performance", "Compliance", "Support", "Scalability", "Cost Efficiency", "Security", "Innovation"]
-)
+st.markdown("Select all that apply:")
+
+# Checkboxes for selecting CSP priorities
+priorities = []
+if st.checkbox("Performance"):
+    priorities.append("Performance")
+if st.checkbox("Compliance"):
+    priorities.append("Compliance")
+if st.checkbox("Support"):
+    priorities.append("Support")
+if st.checkbox("Scalability"):
+    priorities.append("Scalability")
+if st.checkbox("Cost Efficiency"):
+    priorities.append("Cost Efficiency")
+if st.checkbox("Security"):
+    priorities.append("Security")
+if st.checkbox("Innovation"):
+    priorities.append("Innovation")
 
 # Summary of Selections
 st.markdown("### 🌟 Here's a summary of your input:")
 st.write(f"**Assets on the Cloud:** {', '.join(assets) if assets else 'No assets selected.'}")
 st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
+
