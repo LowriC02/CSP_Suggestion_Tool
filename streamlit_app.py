@@ -1,12 +1,16 @@
 import streamlit as st
 import pandas as pd
 
-# Load the questionnaire data
-@st.cache_data
-def load_questionnaire_data():
-    return pd.read_excel("/mnt/data/Cloud Migration Tool Optimisation and Benefits Evaluation(1-9).xlsx")
-
-questionnaire_data = load_questionnaire_data()
+# Simulated data
+questionnaire_data = pd.DataFrame({
+    'Industry': ['Healthcare', 'Finance', 'Retail', 'Technology', 'Other'],
+    'Location': ['North America', 'Europe', 'Asia', 'Other', 'Other'],
+    'Current Cloud Usage': ['None', 'Partial (Hybrid)', 'Full Cloud Deployment', 'None', 'Partial (Hybrid)'],
+    'Critical Assets': ['Data Storage', 'Applications', 'Databases', 'Development Tools', 'Other'],
+    'Cost Sensitivity': ['High', 'Medium', 'Low', 'Medium', 'High'],
+    'Risk Appetite': ['Low', 'Medium', 'High', 'Low', 'Medium'],
+    'Recommended CSP': ['AWS', 'Azure', 'Google Cloud', 'IBM Cloud', 'Oracle Cloud']
+})
 
 # Title and Sidebar
 st.title("Cloud Migration Recommendation Tool")
@@ -88,26 +92,25 @@ def final_csp_recommendation():
     cost_attitude = st.session_state['user_preferences'].get("cost_attitude")
     risk_appetite = st.session_state['user_preferences'].get("risk_appetite")
     
-    # Filter the questionnaire data based on user preferences
+    # Filter the simulated questionnaire data based on user preferences
     filtered_data = questionnaire_data.copy()
     
     if cost_attitude == "Cost is a primary concern":
-        filtered_data = filtered_data[filtered_data['Cost_Sensitivity'] == 'High']
+        filtered_data = filtered_data[filtered_data['Cost Sensitivity'] == 'High']
     elif cost_attitude == "Willing to pay more for the best service":
-        filtered_data = filtered_data[filtered_data['Cost_Sensitivity'] == 'Low']
+        filtered_data = filtered_data[filtered_data['Cost Sensitivity'] == 'Low']
     
     if risk_appetite == "Low":
-        filtered_data = filtered_data[filtered_data['Risk_Apetite'] == 'Low']
+        filtered_data = filtered_data[filtered_data['Risk Appetite'] == 'Low']
     elif risk_appetite == "High":
-        filtered_data = filtered_data[filtered_data['Risk_Apetite'] == 'High']
+        filtered_data = filtered_data[filtered_data['Risk Appetite'] == 'High']
     
     # Display the filtered recommendation
     if not filtered_data.empty:
-        recommended_csp = filtered_data.iloc[0]['Recommended_CSP']
+        recommended_csp = filtered_data.iloc[0]['Recommended CSP']
         st.write(f"Based on your preferences, we recommend: **{recommended_csp}**")
     else:
         st.write("No suitable CSP found based on the selected criteria. Consider adjusting your preferences.")
 
 if st.sidebar.button("Get Final Recommendation"):
     final_csp_recommendation()
-
