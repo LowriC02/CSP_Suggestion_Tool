@@ -1,6 +1,5 @@
 import streamlit as st
-import pydeck as pdk
-import pandas as pd
+
 # Engaging App Introduction
 st.title("Welcome to the Cloud Adventure: Your CSP Suggestion Tool!")
 
@@ -28,62 +27,9 @@ if st.checkbox("Other", key="industry_other"):
 
 
 
-
-
-
-# Predefined locations with latitude and longitude for major continents/regions
-location_data = {
-    "Global": {"lat": 0, "lon": 0},
-    "Africa": {"lat": -8.7832, "lon": 34.5085},
-    "Asia": {"lat": 34.0479, "lon": 100.6197},
-    "Europe": {"lat": 54.5260, "lon": 15.2551},
-    "North America": {"lat": 54.5260, "lon": -105.2551},
-    "South America": {"lat": -8.7832, "lon": -55.4915},
-    "Australia": {"lat": -25.2744, "lon": 133.7751},
-}
-
-# User selects locations
-st.subheader("Where does your company operate?")
-selected_locations = st.multiselect(
-    "Select the regions where your company operates:", 
-    options=list(location_data.keys())
-)
-
-# Prepare data for map display
-map_data = pd.DataFrame(
-    [location_data[location] for location in selected_locations]
-)
-
-# Display the map with selected locations
-if not map_data.empty:
-    st.pydeck_chart(pdk.Deck(
-        map_style='mapbox://styles/mapbox/light-v9',
-        initial_view_state=pdk.ViewState(
-            latitude=0,
-            longitude=0,
-            zoom=1,
-            pitch=0,
-        ),
-        layers=[
-            pdk.Layer(
-                'ScatterplotLayer',
-                data=map_data,
-                get_position='[lon, lat]',
-                get_radius=1000000,
-                get_color=[255, 0, 0],
-                pickable=True,
-            ),
-        ],
-    ))
-
-# Show selected locations
-st.markdown("### Selected Locations:")
-if selected_locations:
-    for loc in selected_locations:
-        st.write(f"{loc} - Latitude: {location_data[loc]['lat']}, Longitude: {location_data[loc]['lon']}")
-else:
-    st.write("No locations selected yet.")
-
+# Location Input - Predefined options (Global and Continents)
+location = st.radio("Where does your company operate?", 
+                    ["Global", "Africa", "Asia", "Europe", "North America", "South America", "Australia"])
 
 
 
