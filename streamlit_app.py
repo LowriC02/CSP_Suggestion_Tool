@@ -1,4 +1,5 @@
 import streamlit as st
+import pydeck as pdk
 
 # Engaging App Introduction
 st.title("Welcome to the Cloud Adventure: Your CSP Suggestion Tool!")
@@ -25,23 +26,59 @@ if st.checkbox("Technology", key="industry_technology"):
 if st.checkbox("Other", key="industry_other"):
     industries.append("Other")
 
-# Location Input - Multiple Choice
+
+
+
+# Map-based Location Selection
 st.subheader("Where does your company operate?")
-locations = []
-if st.checkbox("Global", key="location_global"):
-    locations.append("Global")
-if st.checkbox("Africa", key="location_africa"):
-    locations.append("Africa")
-if st.checkbox("Asia", key="location_asia"):
-    locations.append("Asia")
-if st.checkbox("Europe", key="location_europe"):
-    locations.append("Europe")
-if st.checkbox("North America", key="location_north_america"):
-    locations.append("North America")
-if st.checkbox("South America", key="location_south_america"):
-    locations.append("South America")
-if st.checkbox("Australia", key="location_australia"):
-    locations.append("Australia")
+st.markdown("Click on the map to select your locations.")
+
+# Initial map view (centered globally)
+initial_view_state = pdk.ViewState(
+    latitude=0,
+    longitude=0,
+    zoom=1,
+    pitch=0,
+)
+
+# Placeholder for selected locations
+selected_locations = []
+
+# Function to add a location based on user's map click
+def add_location(latitude, longitude):
+    selected_locations.append({"lat": latitude, "lon": longitude})
+
+# Display the map
+map_data = pdk.Deck(
+    initial_view_state=initial_view_state,
+    map_style='mapbox://styles/mapbox/light-v9',
+    layers=[
+        pdk.Layer(
+            'ScatterplotLayer',
+            data=selected_locations,
+            get_position='[lon, lat]',
+            get_radius=1000000,
+            get_color=[255, 0, 0],
+            pickable=True,
+        ),
+    ],
+)
+
+st.pydeck_chart(map_data)
+
+# Simulate adding a location on click (for demonstration purposes)
+if st.button("Simulate Click (Lat: 37.7749, Lon: -122.4194)"):
+    add_location(37.7749, -122.4194)
+    st.experimental_rerun()
+
+# Show selected locations
+st.markdown("### Selected Locations:")
+if selected_locations:
+    for loc in selected_locations:
+        st.write(f"Latitude: {loc['lat']}, Longitude: {loc['lon']}")
+else:
+    st.write("No locations selected yet.")
+
 
 # Displaying the selected choices
 st.markdown("### Selected Industries:")
