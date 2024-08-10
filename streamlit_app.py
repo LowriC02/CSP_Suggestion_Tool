@@ -1,6 +1,6 @@
 import streamlit as st
 import pydeck as pdk
-
+import pandas as pd
 # Engaging App Introduction
 st.title("Welcome to the Cloud Adventure: Your CSP Suggestion Tool!")
 
@@ -29,63 +29,61 @@ if st.checkbox("Other", key="industry_other"):
 
 
 
-# Map-based Location Selection
+
+
+# Predefined locations with latitude and longitude for major continents/regions
+location_data = {
+    "Global": {"lat": 0, "lon": 0},
+    "Africa": {"lat": -8.7832, "lon": 34.5085},
+    "Asia": {"lat": 34.0479, "lon": 100.6197},
+    "Europe": {"lat": 54.5260, "lon": 15.2551},
+    "North America": {"lat": 54.5260, "lon": -105.2551},
+    "South America": {"lat": -8.7832, "lon": -55.4915},
+    "Australia": {"lat": -25.2744, "lon": 133.7751},
+}
+
+# User selects locations
 st.subheader("Where does your company operate?")
-st.markdown("Click on the map to select your locations.")
-
-# Initial map view (centered globally)
-initial_view_state = pdk.ViewState(
-    latitude=0,
-    longitude=0,
-    zoom=1,
-    pitch=0,
+selected_locations = st.multiselect(
+    "Select the regions where your company operates:", 
+    options=list(location_data.keys())
 )
 
-# Placeholder for selected locations
-selected_locations = []
+# Prepare data for map display
+map_data = pd.DataFrame(
+    [location_data[location] for location in selected_locations]
+)
 
-# Function to add a location based on user's map click
-def add_location(latitude, longitude):
-    selected_locations.append({"lat": latitude, "lon": longitude})
-
-# Display the map
-map_data = pdk.Deck(
-    initial_view_state=initial_view_state,
-    map_style='mapbox://styles/mapbox/light-v9',
-    layers=[
-        pdk.Layer(
-            'ScatterplotLayer',
-            data=selected_locations,
-            get_position='[lon, lat]',
-            get_radius=1000000,
-            get_color=[255, 0, 0],
-            pickable=True,
+# Display the map with selected locations
+if not map_data.empty:
+    st.pydeck_chart(pdk.Deck(
+        map_style='mapbox://styles/mapbox/light-v9',
+        initial_view_state=pdk.ViewState(
+            latitude=0,
+            longitude=0,
+            zoom=1,
+            pitch=0,
         ),
-    ],
-)
-
-st.pydeck_chart(map_data)
-
-# Simulate adding a location on click (for demonstration purposes)
-if st.button("Simulate Click (Lat: 37.7749, Lon: -122.4194)"):
-    add_location(37.7749, -122.4194)
-    st.experimental_rerun()
+        layers=[
+            pdk.Layer(
+                'ScatterplotLayer',
+                data=map_data,
+                get_position='[lon, lat]',
+                get_radius=1000000,
+                get_color=[255, 0, 0],
+                pickable=True,
+            ),
+        ],
+    ))
 
 # Show selected locations
 st.markdown("### Selected Locations:")
 if selected_locations:
     for loc in selected_locations:
-        st.write(f"Latitude: {loc['lat']}, Longitude: {loc['lon']}")
+        st.write(f"{loc} - Latitude: {location_data[loc]['lat']}, Longitude: {location_data[loc]['lon']}")
 else:
     st.write("No locations selected yet.")
 
-
-# Displaying the selected choices
-st.markdown("### Selected Industries:")
-st.write(', '.join(industries) if industries else "No industries selected.")
-
-st.markdown("### Selected Locations:")
-st.write(', '.join(locations) if locations else "No locations selected.")
 
 
 
