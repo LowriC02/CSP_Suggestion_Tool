@@ -22,17 +22,14 @@ if st.checkbox("Manufacturing", key="industry_manufacturing"):
     industries.append("Manufacturing")
 if st.checkbox("Technology", key="industry_technology"):
     industries.append("Technology")
+if st.checkbox("Education", key="industry_education"):
+    industries.append("Education")
 if st.checkbox("Other", key="industry_other"):
     industries.append("Other")
-
-
 
 # Location Input - Predefined options (Global and Continents)
 location = st.radio("Where does your company operate?", 
                     ["Global", "Africa", "Asia", "Europe", "North America", "South America", "Australia"])
-
-
-
 
 # Continuing the adventure with a new section
 st.header("⛅️ Mapping Your Cloud Terrain")
@@ -79,8 +76,6 @@ st.write(f"**Cloud Situation:** {cloud_situation}")
 st.write(f"**Risk Appetite:** {risk_appetite}")
 st.write(f"**Cost Attitude:** {cost_attitude}")
 
-
-
 # Introducing the next section
 st.header("🏔️ Scaling the Cloud Peaks")
 
@@ -126,8 +121,6 @@ if st.checkbox("Other", key="priority_other"):
 st.markdown("### 🌟 Here's a summary of your input:")
 st.write(f"**Assets on the Cloud:** {', '.join(assets) if assets else 'No assets selected.'}")
 st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
-
-
 
 # Introducing the next section
 st.header("🔐 Navigating the Security Jungle")
@@ -189,13 +182,13 @@ st.markdown("### 🛠️ Tools & Resources")
 st.write(f"**Key Assets on the Cloud:** {', '.join(assets) if assets else 'No assets selected.'}")
 
 st.markdown("### 🛡️ Security Measures")
-st.write(f"**Security Preferences:** {', '.join(security_preferences) if security_preferences else 'No security preferences selected.'}")
+st.write(f"**Security Preferences:** {', '.join(security_preferences) if security_preferences else 'No security preferences selected.'")
 
 st.markdown("### 📦 Desired Features")
-st.write(f"**CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'}")
+st.write(f"**CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'")
 
 st.markdown("### 🌩️ Cloud Companions")
-st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
+st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'")
 
 # Initialize csps list to track recommendations
 csps = []
@@ -206,34 +199,37 @@ csps = []
 # Adjusted CSP Recommendation Based on Multiple Selections
 st.subheader("10. Our CSP Recommendation")
 
-# Decision Logic for CSP Recommendation
-if "Security" in priorities or "Compliance" in priorities:
-    csps.append("Microsoft Azure")
-    st.markdown("### 🛡️ We recommend **[Microsoft Azure](https://azure.microsoft.com/)** for its strong focus on enterprise security and compliance features.")
-elif "AI and Machine Learning Capabilities" in desired_features or "Data Analytics" in priorities:
-    csps.append("Google Cloud Platform (GCP)")
-    st.markdown("### 🤖 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its industry-leading AI, machine learning, and data analytics capabilities.")
-elif "Scalability" in priorities or "Infrastructure" in assets:
-    csps.append("Amazon Web Services (AWS)")
-    st.markdown("### 🌐 We recommend **[Amazon Web Services (AWS)](https://aws.amazon.com/)** for its highly scalable and flexible infrastructure.")
-elif "Cost Efficiency" in priorities:
-    csps.append("Google Cloud Platform (GCP)")
-    st.markdown("### 💰 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its competitive pricing and strong cost management tools.")
+# Check if there is sufficient information to make a recommendation
+if not industries and not priorities and not assets and not security_preferences and not desired_features:
+    st.markdown("### 🛑 Oh no! It seems you haven't gathered all the provisions for your adventure.")
+    st.markdown("Make sure to select your industry's focus, set your priorities, and identify the key features you need in a CSP before we can recommend the best route for your cloud journey!")
 else:
-    # Specific adjustments based on selected industries and locations
-    if "Healthcare" in industries or "Finance" in industries:
-        st.markdown("### 🏥 We recommend **[Microsoft Azure](https://azure.microsoft.com/)** for its compliance and security features, which are crucial for industries like healthcare and finance.")
-    elif "Technology" in industries or "AI and Machine Learning Capabilities" in desired_features:
-        st.markdown("### 🤖 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its advanced technology features and strong AI/ML capabilities.")
-    elif "Retail" in industries or "Cost Efficiency" in priorities:
-        st.markdown("### 🛒 We recommend **[Amazon Web Services (AWS)](https://aws.amazon.com/)** for its flexible pricing and scalability, ideal for the retail sector.")
-    elif location == "Global" or location == "Asia":
-        st.markdown("### 🌍 We recommend **[Amazon Web Services (AWS)](https://aws.amazon.com/)** for its extensive global reach and strong presence in Asia.")
+    # Decision Logic for CSP Recommendation
+    if "Security" in priorities or "Compliance" in priorities:
+        csps.append("Microsoft Azure")
+        st.markdown("### 🛡️ We recommend **[Microsoft Azure](https://azure.microsoft.com/)** for its strong focus on enterprise security and compliance features.")
+    elif "AI and Machine Learning Capabilities" in desired_features or "Data Analytics" in priorities:
+        csps.append("Google Cloud Platform (GCP)")
+        st.markdown("### 🤖 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its industry-leading AI, machine learning, and data analytics capabilities.")
+    elif "Scalability" in priorities or "Infrastructure" in assets:
+        csps.append("Amazon Web Services (AWS)")
+        st.markdown("### 🌐 We recommend **[Amazon Web Services (AWS)](https://aws.amazon.com/)** for its highly scalable and flexible infrastructure.")
+    elif "Cost Efficiency" in priorities:
+        csps.append("Google Cloud Platform (GCP)")
+        st.markdown("### 💰 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its competitive pricing and strong cost management tools.")
     else:
-        st.markdown("### 🌍 Based on your preferences, we suggest exploring each CSP further to find the best match for your needs.")
-
-
-# Final Confirmation
+        # Specific adjustments based on selected industries and locations
+        if "Healthcare" in industries or "Finance" in industries or "Education" in industries:
+            st.markdown("### 🏥 We recommend **[Microsoft Azure](https://azure.microsoft.com/)** for its compliance and security features, which are crucial for industries like healthcare, finance, and education.")
+        elif "Technology" in industries or "AI and Machine Learning Capabilities" in desired_features:
+            st.markdown("### 🤖 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its advanced technology features and strong AI/ML capabilities.")
+        elif "Retail" in industries or "Cost Efficiency" in priorities:
+            st.markdown("### 🛒 We recommend **[Amazon Web Services (AWS)](https://aws.amazon.com/)** for its flexible pricing and scalability, ideal for the retail sector.")
+        elif location == "Global" or location == "Asia":
+            st.markdown("### 🌍 We recommend **[Amazon Web Services (AWS)](https://aws.amazon.com/)** for its extensive global reach and strong presence in Asia.")
+        else:
+            st.markdown("### 🌍 Based on your preferences, we suggest exploring each CSP further to find the best match for your needs.")
+            
 st.subheader("11. Are You Ready to Embark?")
 ready = st.radio(
     "Do you feel ready to embark on your tropical cloud migration adventure?",
@@ -242,6 +238,6 @@ ready = st.radio(
 
 # Conditional message based on readiness
 if ready == "Yes, I’m ready!":
-    st.markdown("### 🏝️ The Adventure has been planned! Your tropical cloud journey awaits. Best of luck!")
+    st.markdown("### 🏝️ I'm ready to set off! Your tropical cloud journey awaits. Best of luck!")
 else:
-    st.markdown("### 🌴 No worries! Take your time to review and adjust your plan before setting off.")
+       st.markdown("### 🌴 Oh dear! It seems you're not quite ready yet. Take your time to review and adjust your plan before setting off on this grand adventure.")
