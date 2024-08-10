@@ -200,6 +200,9 @@ st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priori
 # Initialize csps list to track recommendations
 csps = []
 
+# Initialize csps list to track recommendations
+csps = []
+
 # Adjusted CSP Recommendation Based on Multiple Selections
 st.subheader("10. Our CSP Recommendation")
 
@@ -224,10 +227,11 @@ else:
         st.markdown("### 🤖 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its advanced technology features and strong AI/ML capabilities.")
     elif "Retail" in industries or "Cost Efficiency" in priorities:
         st.markdown("### 🛒 We recommend **[Amazon Web Services (AWS)](https://aws.amazon.com/)** for its flexible pricing and scalability, ideal for the retail sector.")
-    elif "Global" in locations or "Asia" in locations:
+    elif location == "Global" or location == "Asia":
         st.markdown("### 🌍 We recommend **[Amazon Web Services (AWS)](https://aws.amazon.com/)** for its extensive global reach and strong presence in Asia.")
     else:
         st.markdown("### 🌍 Based on your preferences, we suggest exploring each CSP further to find the best match for your needs.")
+
 
 # Final Confirmation
 st.subheader("11. Are You Ready to Embark?")
