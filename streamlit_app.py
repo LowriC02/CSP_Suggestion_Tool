@@ -182,7 +182,7 @@ st.markdown("### 🛠️ Tools & Resources")
 st.write(f"**Key Assets on the Cloud:** {', '.join(assets) if assets else 'No assets selected.'}")
 
 st.markdown("### 🛡️ Security Measures")
-st.write(f"**Security Preferences:** {', '.join(security_preferences) if security_preferences else 'No security preferences selected.'")
+st.write(f"**Security Preferences:** {', '.join(security_preferences) if security_preferences else 'No security preferences selected.'}")
 
 st.markdown("### 📦 Desired Features")
 st.write(f"**CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'")
@@ -190,11 +190,6 @@ st.write(f"**CSP Features:** {', '.join(desired_features) if desired_features el
 st.markdown("### 🌩️ Cloud Companions")
 st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'")
 
-# Initialize csps list to track recommendations
-csps = []
-
-# Initialize csps list to track recommendations
-csps = []
 
 # Adjusted CSP Recommendation Based on Multiple Selections
 st.subheader("10. Our CSP Recommendation")
