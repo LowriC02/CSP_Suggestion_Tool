@@ -188,7 +188,7 @@ st.markdown("### 📦 Desired Features")
 st.write(f"**CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'}")
 
 st.markdown("### 🌩️ Cloud Companions")
-st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'")
+st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
 
 
 # Adjusted CSP Recommendation Based on Multiple Selections
