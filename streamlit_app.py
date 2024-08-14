@@ -212,7 +212,9 @@ else:
         st.markdown("### 💰 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its competitive pricing and strong cost management tools.")
     else:
         # Specific adjustments based on selected industries and locations
-        if "Healthcare" in industries or "Finance" in industries or "Education" in industries:
+        if "Healthcare" in industries or "Finance" in industries or "Higher Education" in industries:
+            st.markdown("### 🤖 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its compatability with Google Classroom.")
+        elif "Primary Education" in industries:
             st.markdown("### 🏥 We recommend **[Microsoft Azure](https://azure.microsoft.com/)** for its compliance and security features, which are crucial for industries like healthcare, finance, and education.")
         elif "Technology" in industries or "AI and Machine Learning Capabilities" in desired_features:
             st.markdown("### 🤖 We recommend **[Google Cloud Platform (GCP)](https://cloud.google.com/)** for its advanced technology features and strong AI/ML capabilities.")
