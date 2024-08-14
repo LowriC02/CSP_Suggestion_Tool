@@ -180,7 +180,7 @@ if st.checkbox("Other", key="features_other"):
 # Summary of Selections
 st.markdown("### 🌟 Here's a summary of your security preferences and feature wishlist:")
 st.write(f"**Security Measures:** {', '.join(security_preferences) if security_preferences else 'No security measures selected.'}")
-st.write(f"**Desired CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'")
+st.write(f"**Desired CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'}")
 
 # 🏝️ Wrapping Up Your Tropical Cloud Adventure
 st.header("🏝️ Wrapping Up Your Tropical Cloud Adventure")
