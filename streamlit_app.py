@@ -22,9 +22,9 @@ if st.checkbox("Manufacturing", key="industry_manufacturing"):
     industries.append("Manufacturing")
 if st.checkbox("Technology", key="industry_technology"):
     industries.append("Technology")
-if st.checkbox("Primary Education", key="industry_education"):
+if st.checkbox("Primary Education", key="industry_primary_education"):
     industries.append("Primary Education")
-if st.checkbox("Higher Education", key="industry_education"):
+if st.checkbox("Higher Education", key="industry_higher_education"):
     industries.append("Higher Education")
 if st.checkbox("Other", key="industry_other"):
     industries.append("Other")
