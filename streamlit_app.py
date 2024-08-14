@@ -199,7 +199,7 @@ st.markdown("### 🛡️ Security Measures")
 st.write(f"**Security Preferences:** {', '.join(security_preferences) if security_preferences else 'No security preferences selected.'}")
 
 st.markdown("### 📦 Desired Features")
-st.write(f"**CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'}")
+st.write(f"**CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'")
 
 st.markdown("### 🌩️ Cloud Companions")
 st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
@@ -215,36 +215,170 @@ else:
     recommendations = []
     recommendation_reasons = []
 
-    if "Security" in priorities or "Compliance" in priorities or "Advanced Encryption" in security_preferences or "Compliance with Industry Standards (e.g., GDPR, ISO 27001)" in security_preferences:
+    # Industries
+    if "Healthcare" in industries or "Finance" in industries or "Higher Education" in industries:
         recommendations.append("Microsoft Azure")
-        recommendation_reasons.append("strong focus on security and compliance")
+        recommendation_reasons.append("compliance and security features crucial for regulated industries")
 
-    if "AI and Machine Learning Capabilities" in desired_features or "Innovation" in priorities or "Technology" in industries or "Applications" in assets or "Development Tools" in assets:
-        recommendations.append("Google Cloud Platform (GCP)")
-        recommendation_reasons.append("industry-leading AI, machine learning, and developer tools")
-
-    if "Scalability" in priorities or "High Availability and Uptime Guarantees" in desired_features or "Infrastructure" in assets or "Retail" in industries or "Manufacturing" in industries:
+    if "Retail" in industries or "Manufacturing" in industries:
         recommendations.append("Amazon Web Services (AWS)")
-        recommendation_reasons.append("scalability, global reach, and flexible infrastructure")
-
-    if "Cost Efficiency" in priorities or "Cost Management Tools" in desired_features:
-        recommendations.append("Google Cloud Platform (GCP)")
-        recommendation_reasons.append("competitive pricing and strong cost management tools")
+        recommendation_reasons.append("scalability and flexibility for handling large fluctuations in demand")
 
     if "Primary Education" in industries:
         recommendations.append("Google Cloud Platform (GCP)")
         recommendation_reasons.append("alignment with Google Classroom and resources tailored for education")
 
-    if "Healthcare" in industries or "Finance" in industries or "Higher Education" in industries:
-        recommendations.append("Microsoft Azure")
-        recommendation_reasons.append("compliance and security features crucial for regulated industries")
+    if "Technology" in industries:
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("strong AI and machine learning capabilities and innovation focus")
 
-    if any(location in locations for location in ["Asia", "Africa"]):
+    # Location
+    if "Asia" in locations or "Africa" in locations:
         recommendations.append("Amazon Web Services (AWS)")
         recommendation_reasons.append("extensive presence and infrastructure in these regions")
 
+    # Current Cloud Situation
+    if cloud_situation == "We’re fully on the cloud and loving it!":
+        recommendations.append("Amazon Web Services (AWS)")
+        recommendation_reasons.append("extensive services and flexibility, especially for scaling and innovation")
+
+    elif cloud_situation == "We’re dabbling with a hybrid approach.":
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("strong integration with on-premise systems and hybrid cloud strategies")
+
+    elif cloud_situation == "We haven’t touched the cloud yet.":
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("user-friendly tools and strong support for cloud adoption")
+
+    # Risk Appetite
+    if risk_appetite == "We're bold risk-takers, always ready to innovate.":
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("cutting-edge AI/ML tools ideal for companies willing to innovate")
+
+    elif risk_appetite == "We prefer a balanced approach, weighing risks carefully.":
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("focus on security, compliance, and balanced approach to risk")
+
+    elif risk_appetite == "We’re risk-averse, focusing on stability and security.":
+        recommendations.append("Amazon Web Services (AWS)")
+        recommendation_reasons.append("extensive security features and compliance certifications")
+
+    # Cost Attitude
+    if cost_attitude == "We’re willing to invest heavily for the best outcomes.":
+        recommendations.append("Amazon Web Services (AWS)")
+        recommendation_reasons.append("extensive service offerings and premium features")
+
+    elif cost_attitude == "We aim to balance cost and quality—value is key.":
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("good value with balanced cost and performance")
+
+    elif cost_attitude == "We’re focused on minimizing costs wherever possible.":
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("competitive pricing and strong cost management tools")
+
+    # Assets on the Cloud
+    if "Data Storage" in assets:
+        recommendations.append("Amazon Web Services (AWS)")
+        recommendation_reasons.append("scalable and secure data storage solutions")
+
+    if "Applications" in assets:
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("powerful tools for application development and integration")
+
+    if "Databases" in assets:
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("comprehensive database services and management")
+
+    if "Development Tools" in assets:
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("developer-friendly tools like GKE and Cloud Functions")
+
+    # Priorities in Selecting a CSP
+    if "Performance" in priorities:
+        recommendations.append("Amazon Web Services (AWS)")
+        recommendation_reasons.append("high-performance computing capabilities and global infrastructure")
+
+    if "Compliance" in priorities:
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("over 90 compliance certifications, ideal for regulated industries")
+
+    if "Support" in priorities:
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("strong enterprise support with dedicated account managers")
+
+    if "Scalability" in priorities:
+        recommendations.append("Amazon Web Services (AWS)")
+        recommendation_reasons.append("scalable services that grow with your company’s needs")
+
+    if "Cost Efficiency" in priorities:
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("cost-effective pricing models and tools for cost management")
+
+    if "Security" in priorities:
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("robust security offerings and compliance with industry standards")
+
+    if "Innovation" in priorities:
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("leading in AI and machine learning for innovative companies")
+
+    # Security Preferences
+    if "Advanced Encryption" in security_preferences:
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("extensive encryption options for security-conscious companies")
+
+    if "Multi-Factor Authentication (MFA)" in security_preferences:
+        recommendations.append("Amazon Web Services (AWS)")
+        recommendation_reasons.append("comprehensive MFA solutions that integrate seamlessly")
+
+    if "Regular Security Audits" in security_preferences:
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("frequent security audits and tools for ongoing compliance")
+
+    if "Data Loss Prevention (DLP)" in security_preferences:
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("highly regarded DLP tools for protecting sensitive information")
+
+    if "Intrusion Detection and Prevention" in security_preferences:
+        recommendations.append("Amazon Web Services (AWS)")
+        recommendation_reasons.append("robust intrusion detection systems like GuardDuty")
+
+    if "Compliance with Industry Standards (e.g., GDPR, ISO 27001)" in security_preferences:
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("extensive list of industry-standard compliance certifications")
+
+    # Desired Features in a CSP
+    if "High Availability and Uptime Guarantees" in desired_features:
+        recommendations.append("Amazon Web Services (AWS)")
+        recommendation_reasons.append("well-known for high availability and strong uptime guarantees")
+
+    if "24/7 Customer Support" in desired_features:
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("strong 24/7 support, particularly valued by enterprises")
+
+    if "Scalable Infrastructure" in desired_features:
+        recommendations.append("Amazon Web Services (AWS)")
+        recommendation_reasons.append("scalable infrastructure allowing quick adjustments of resources")
+
+    if "Cost Management Tools" in desired_features:
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("comprehensive cost management tools praised for ease of use")
+
+    if "AI and Machine Learning Capabilities" in desired_features:
+        recommendations.append("Google Cloud Platform (GCP)")
+        recommendation_reasons.append("leader in AI and ML services, offering cutting-edge tools")
+
+    if "Integration with Existing Systems" in desired_features:
+        recommendations.append("Microsoft Azure")
+        recommendation_reasons.append("particularly strong in integrating with on-premises Microsoft systems")
+
+    # Final Recommendation
     if recommendations:
-        st.markdown(f"### 🌟 We recommend **{' and '.join(recommendations)}** for your cloud journey because of its {', '.join(recommendation_reasons)}.")
+        # Removing duplicates
+        unique_recommendations = list(dict.fromkeys(recommendations))
+        unique_reasons = list(dict.fromkeys(recommendation_reasons))
+
+        st.markdown(f"### 🌟 We recommend **{' and '.join(unique_recommendations)}** for your cloud journey because of its {', '.join(unique_reasons)}.")
     else:
         st.markdown("### 🌍 Based on your preferences, we suggest exploring each CSP further to find the best match for your needs.")
             
