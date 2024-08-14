@@ -326,9 +326,6 @@ else:
 st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
 st.markdown(f"**Reason:** {final_reason}")
 
-    # Display the final recommendation with links
-st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
-st.markdown(f"**Reason:** {final_reason}")
 
 st.subheader("11. Are You Ready to Embark?")
 ready = st.radio(
