@@ -309,18 +309,23 @@ else:
     if "Integration with Existing Systems" in desired_features:
         azure_count += 1
 
-    # Determine the CSP with the highest count
-    if azure_count > aws_count and azure_count > gcp_count:
-        final_recommendation = "Microsoft Azure"
-        final_reason = "Azure is recommended due to its strong compliance, security features, and its ability to integrate with existing systems."
-    elif aws_count > azure_count and aws_count > gcp_count:
-        final_recommendation = "Amazon Web Services (AWS)"
-        final_reason = "AWS is recommended for its scalability, global reach, and flexible infrastructure."
-    elif gcp_count > azure_count and gcp_count > aws_count:
-        final_recommendation = "Google Cloud Platform (GCP)"
-        final_reason = "GCP is recommended for its strong AI/ML capabilities, innovation focus, and cost efficiency."
-    else:
-        final_recommendation = "Based on your inputs, multiple CSPs could be a good fit. You may want to explore each option further."
+  # Final Recommendation with Links
+if azure_count > aws_count and azure_count > gcp_count:
+    final_recommendation = "[Microsoft Azure](https://azure.microsoft.com/)"
+    final_reason = "Azure is recommended due to its strong compliance, security features, and its ability to integrate with existing systems."
+elif aws_count > azure_count and aws_count > gcp_count:
+    final_recommendation = "[Amazon Web Services (AWS)](https://aws.amazon.com/)"
+    final_reason = "AWS is recommended for its scalability, global reach, and flexible infrastructure."
+elif gcp_count > azure_count and gcp_count > aws_count:
+    final_recommendation = "[Google Cloud Platform (GCP)](https://cloud.google.com/)"
+    final_reason = "GCP is recommended for its strong AI/ML capabilities, innovation focus, and cost efficiency."
+else:
+    final_recommendation = "Based on your inputs, multiple CSPs could be a good fit. You may want to explore each option further."
+
+# Display the final recommendation with links
+st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
+st.markdown(f"**Reason:** {final_reason}")
+
 
     # Display the final recommendation
     st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
