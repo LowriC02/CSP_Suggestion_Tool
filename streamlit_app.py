@@ -322,12 +322,22 @@ elif gcp_count > azure_count and gcp_count > aws_count:
 else:
     final_recommendation = "Based on your inputs, multiple CSPs could be a good fit. You may want to explore each option further to find the best match for your specific needs."
 
+st.subheader("11. DISCLAIMER!")
+# Create a disclaimer checkbox
+disclaimer_checked = st.checkbox("I acknowledge that the following suggestion is only meant as advice.")
+
+# Display the suggestion if the checkbox is checked
+if disclaimer_checked:
+    st.write("You acknowledged the disclaimer. Here is the advice...")
+else:
+    st.write("Please check the box to proceed with the advice.")
+
 # Display the final recommendation with links
 st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
 st.markdown(f"**Reason:** {final_reason}")
 
 
-st.subheader("11. Are You Ready to Embark?")
+st.subheader("12. Are You Ready to Embark?")
 ready = st.radio(
     "Do you feel ready to embark on your tropical cloud migration adventure?",
     ["Yes, I’m ready!", "I need to make some adjustments."]
