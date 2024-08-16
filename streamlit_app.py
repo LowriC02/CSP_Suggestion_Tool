@@ -1,7 +1,13 @@
 import streamlit as st
+# Disclaimer Checkbox
+st.sidebar.markdown("### Disclaimer")
+disclaimer_checked = st.sidebar.checkbox("I acknowledge that the following suggestions are only meant as advice.")
 
-# Engaging App Introduction
-st.title("Welcome to the Cloud Adventure: Your CSP Suggestion Tool!")
+if not disclaimer_checked:
+    st.sidebar.warning("Please acknowledge the disclaimer to proceed with the tool.")
+else:
+    # Engaging App Introduction
+    st.title("Welcome to the Cloud Adventure: Your CSP Suggestion Tool!")
 
 st.markdown("""
 🌴 **Welcome Adventurer!** Embark on your cloud migration journey with us. Whether you're optimizing performance, balancing costs, 
