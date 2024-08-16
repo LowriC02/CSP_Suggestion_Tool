@@ -2,7 +2,7 @@ import streamlit as st
 
 # Disclaimer Checkbox
 st.sidebar.markdown("### Disclaimer")
-disclaimer_checked = st.sidebar.checkbox("I acknowledge that the following suggestions are only meant as advice.")
+disclaimer_checked = st.sidebar.checkbox("I acknowledge that the following suggestions are only meant to suggest not advise.")
 
 if not disclaimer_checked:
     st.sidebar.warning("Please acknowledge the disclaimer to proceed with the tool.")
