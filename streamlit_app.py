@@ -314,7 +314,7 @@ else:
     # Determine the CSP with the highest count
     if azure_count > aws_count and azure_count > gcp_count:
         final_recommendation = "[Microsoft Azure](https://azure.microsoft.com/)"
-        final_reason = "Microsoft Azure is recommended due to its strong focus on compliance and security features, making it an ideal choice for organizations in regulated industries. Additionally, Azure excels in integrating with existing Microsoft infrastructure, offering seamless hybrid cloud capabilities."
+        final_reason = "Microsoft Azure is recommended due to its strong focus on compliance and security features, making it an ideal choice for organisations in regulated industries. Additionally, Azure excels in integrating with existing Microsoft infrastructure, offering seamless hybrid cloud capabilities."
     elif aws_count > azure_count and aws_count > gcp_count:
         final_recommendation = "[Amazon Web Services (AWS)](https://aws.amazon.com/)"
         final_reason = "Amazon Web Services (AWS) is recommended for its unmatched scalability, global reach, and flexible infrastructure. AWS is particularly well-suited for businesses requiring high performance, global coverage, and the ability to handle fluctuating workloads with ease."
