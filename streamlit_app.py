@@ -214,7 +214,7 @@ else:
     # Adjusted CSP Recommendation Based on Multiple Selections
     st.subheader("10. Our CSP Recommendation")
 
-    # Initialize counters for each CSP
+    # Initialise counters for each CSP
     azure_count = 0
     aws_count = 0
     gcp_count = 0
