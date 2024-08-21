@@ -87,7 +87,7 @@ else:
         [
             "We’re willing to invest heavily for the best outcomes.",
             "We aim to balance cost and quality—value is key.",
-            "We’re focused on minimizing costs wherever possible."
+            "We’re focused on minimising costs wherever possible."
         ]
     )
 
