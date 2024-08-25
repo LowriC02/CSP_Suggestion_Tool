@@ -187,7 +187,7 @@ else:
     # Summary of Selections
     st.markdown("### 🌟 Here's a summary of your security preferences and feature wishlist:")
     st.write(f"**Security Measures:** {', '.join(security_preferences) if security_preferences else 'No security measures selected.'}")
-    st.write(f"**Desired CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'}")
+        st.write(f"**Desired CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'}")
 
     # 🏝️ Wrapping Up Your Tropical Cloud Adventure
     st.header("🏝️ Wrapping Up Your Tropical Cloud Adventure")
@@ -215,7 +215,7 @@ else:
     st.subheader("10. Our CSP Recommendation")
 
     # Initialise counters for each CSP
-    azure_count= 0
+    azure_count = 0
     aws_count = 0
     gcp_count = 0
 
@@ -310,41 +310,35 @@ else:
         gcp_count += 1
     if "Integration with Existing Systems" in desired_features:
         azure_count += 1
-   # Final Count
-azure_count = 0
-aws_count = 0
-gcp_count = 0
-if azure_count > aws_count and azure_count > gcp_count:
-    final_recommendation = "[Microsoft Azure](https://azure.microsoft.com/)"
-    final_reason = "Microsoft Azure is recommended due to its strong focus on compliance and security features, making it an ideal choice for organisations in regulated industries. Additionally, Azure excels in integrating with existing Microsoft infrastructure, offering seamless hybrid cloud capabilities."
-elif aws_count > azure_count and aws_count > gcp_count:
-    final_recommendation = "[Amazon Web Services (AWS)](https://aws.amazon.com/)"
-    final_reason = "Amazon Web Services (AWS) is recommended for its unmatched scalability, global reach, and flexible infrastructure. AWS is particularly well-suited for businesses requiring high performance, global coverage, and the ability to handle fluctuating workloads with ease."
-elif gcp_count > azure_count and gcp_count > aws_count:
-    final_recommendation = "[Google Cloud Platform (GCP)](https://cloud.google.com/)"
-    final_reason = "Google Cloud Platform (GCP) is recommended for its industry-leading artificial intelligence and machine learning capabilities, along with its focus on innovation. GCP offers cost-effective solutions and is especially suited for technology-driven organizations looking to leverage cutting-edge technology."
-else:
-    final_recommendation = "More Data Needed."
-    final_reason = "Oh no! It appears you haven't provided us with enough data to give you a recommendation but fear not brave adventurer! Once you have gathered more data to provide us with, we can once again help you begin your cloud migration journey!."
 
-# Display the final recommendation with links
-st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
-st.markdown(f"**Reason:** {final_reason}")
+    # Final CSP Recommendation
+    if azure_count > aws_count and azure_count > gcp_count:
+        final_recommendation = "[Microsoft Azure](https://azure.microsoft.com/)"
+        final_reason = "Microsoft Azure is recommended due to its strong focus on compliance and security features, making it an ideal choice for organisations in regulated industries. Additionally, Azure excels in integrating with existing Microsoft infrastructure, offering seamless hybrid cloud capabilities."
+    elif aws_count > azure_count and aws_count > gcp_count:
+        final_recommendation = "[Amazon Web Services (AWS)](https://aws.amazon.com/)"
+        final_reason = "Amazon Web Services (AWS) is recommended for its unmatched scalability, global reach, and flexible infrastructure. AWS is particularly well-suited for businesses requiring high performance, global coverage, and the ability to handle fluctuating workloads with ease."
+    elif gcp_count > azure_count and gcp_count > aws_count:
+        final_recommendation = "[Google Cloud Platform (GCP)](https://cloud.google.com/)"
+        final_reason = "Google Cloud Platform (GCP) is recommended for its industry-leading artificial intelligence and machine learning capabilities, along with its focus on innovation. GCP offers cost-effective solutions and is especially suited for technology-driven organizations looking to leverage cutting-edge technology."
+    else:
+        final_recommendation = "More Data Needed."
+        final_reason = "Oh no! It appears you haven't provided us with enough data to give you a recommendation but fear not brave adventurer! Once you have gathered more data to provide us with, we can once again help you begin your cloud migration journey!"
 
+    # Display the final recommendation with links
+    st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
+    st.markdown(f"**Reason:** {final_reason}")
 
-
-
-
-# Final Question
-st.subheader("11. Are You Ready to Embark?")
-ready = st.radio(
-    "Do you feel ready to embark on your tropical cloud migration adventure?",
-    ["Yes, I’m ready!", "I need to make some adjustments."]
-)
-    
+    # Final Question
+    st.subheader("11. Are You Ready to Embark?")
+    ready = st.radio(
+        "Do you feel ready to embark on your tropical cloud migration adventure?",
+        ["Yes, I’m ready!", "I need to make some adjustments."]
+    )
 
     # Conditional message based on readiness
-if ready == "Yes, I’m ready!":
+    if ready == "Yes, I’m ready!":
         st.markdown("### 🏝️ I'm ready to set off! Your tropical cloud journey awaits. Best of luck!")
-else:
+    else:
         st.markdown("### 🌴 Oh dear! It seems you're not quite ready yet. Take your time to review and adjust your plan before setting off on this grand adventure.")
+
