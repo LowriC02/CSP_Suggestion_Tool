@@ -311,7 +311,7 @@ else:
     if "Integration with Existing Systems" in desired_features:
         azure_count += 1
    # Final Count
- # Make sure that this line matches the outer indentation level
+
 if azure_count > aws_count and azure_count > gcp_count:
     final_recommendation = "[Microsoft Azure](https://azure.microsoft.com/)"
     final_reason = "Microsoft Azure is recommended due to its strong focus on compliance and security features, making it an ideal choice for organisations in regulated industries. Additionally, Azure excels in integrating with existing Microsoft infrastructure, offering seamless hybrid cloud capabilities."
@@ -322,8 +322,8 @@ elif gcp_count > azure_count and gcp_count > aws_count:
     final_recommendation = "[Google Cloud Platform (GCP)](https://cloud.google.com/)"
     final_reason = "Google Cloud Platform (GCP) is recommended for its industry-leading artificial intelligence and machine learning capabilities, along with its focus on innovation. GCP offers cost-effective solutions and is especially suited for technology-driven organizations looking to leverage cutting-edge technology."
 else:
-    final_recommendation = "Based on your inputs, multiple CSPs could be a good fit."
-    final_reason = "Multiple cloud service providers could be suitable based on your criteria. Consider exploring each provider further to find the best match."
+    final_recommendation = "More Data Needed."
+    final_reason = "Oh no! It appears you haven't provided us with enough data to give you a recommendation but fear not brave adventurer! Once you have gathered more data to provide us with, we can once again help you begin your cloud migration journey."
 
 # Display the final recommendation with links
 st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
