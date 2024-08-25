@@ -215,7 +215,7 @@ else:
     st.subheader("10. Our CSP Recommendation")
 
     # Initialise counters for each CSP
-    azure_count = 0
+    azure_count= 0
     aws_count = 0
     gcp_count = 0
 
@@ -311,7 +311,9 @@ else:
     if "Integration with Existing Systems" in desired_features:
         azure_count += 1
    # Final Count
-
+azure_count = 0
+aws_count = 0
+gcp_count = 0
 if azure_count > aws_count and azure_count > gcp_count:
     final_recommendation = "[Microsoft Azure](https://azure.microsoft.com/)"
     final_reason = "Microsoft Azure is recommended due to its strong focus on compliance and security features, making it an ideal choice for organisations in regulated industries. Additionally, Azure excels in integrating with existing Microsoft infrastructure, offering seamless hybrid cloud capabilities."
