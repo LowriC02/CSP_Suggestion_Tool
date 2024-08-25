@@ -342,7 +342,7 @@ ready = st.radio(
     
 
     # Conditional message based on readiness
-    if ready == "Yes, I’m ready!":
+if ready == "Yes, I’m ready!":
         st.markdown("### 🏝️ I'm ready to set off! Your tropical cloud journey awaits. Best of luck!")
-    else:
+else:
         st.markdown("### 🌴 Oh dear! It seems you're not quite ready yet. Take your time to review and adjust your plan before setting off on this grand adventure.")
