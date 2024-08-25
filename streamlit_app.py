@@ -312,20 +312,17 @@ else:
         azure_count += 1
 
     # Determine the CSP with the highest count
- # Make sure this line is correctly indented according to the previous block
-if azure_count > aws_count and azure_count > gcp_count:
-    final_recommendation = "[Microsoft Azure](https://azure.microsoft.com/)"
-    final_reason = "Microsoft Azure is recommended due to its strong focus on compliance and security features..."
-elif aws_count > azure_count and aws_count > gcp_count:
-    final_recommendation = "[Amazon Web Services (AWS)](https://aws.amazon.com/)"
-    final_reason = "Amazon Web Services (AWS) is recommended for its unmatched scalability..."
-elif gcp_count > azure_count and gcp_count > aws_count:
-    final_recommendation = "[Google Cloud Platform (GCP)](https://cloud.google.com/)"
-    final_reason = "Google Cloud Platform (GCP) is recommended for its industry-leading AI and machine learning capabilities..."
-else:
-    final_recommendation = "Based on your inputs, multiple CSPs could be a good fit."
-    final_reason = "Multiple cloud service providers could be suitable based on your criteria. Consider exploring each provider further to find the best match."
-
+    if azure_count > aws_count and azure_count > gcp_count:
+        final_recommendation = "[Microsoft Azure](https://azure.microsoft.com/)"
+        final_reason = "Microsoft Azure is recommended due to its strong focus on compliance and security features, making it an ideal choice for organisations in regulated industries. Additionally, Azure excels in integrating with existing Microsoft infrastructure, offering seamless hybrid cloud capabilities."
+    elif aws_count > azure_count and aws_count > gcp_count:
+        final_recommendation = "[Amazon Web Services (AWS)](https://aws.amazon.com/)"
+        final_reason = "Amazon Web Services (AWS) is recommended for its unmatched scalability, global reach, and flexible infrastructure. AWS is particularly well-suited for businesses requiring high performance, global coverage, and the ability to handle fluctuating workloads with ease."
+    elif gcp_count > azure_count and gcp_count > aws_count:
+        final_recommendation = "[Google Cloud Platform (GCP)](https://cloud.google.com/)"
+        final_reason = "Google Cloud Platform (GCP) is recommended for its industry-leading artificial intelligence and machine learning capabilities, along with its focus on innovation. GCP offers cost-effective solutions and is especially suited for technology-driven organizations looking to leverage cutting-edge technology."
+    else:
+        final_recommendation = "Based on your inputs, multiple CSPs could be a good fit. You may want to explore each option further to find the best match for your specific needs."
     # <---- Missing definition of `final_reason` in this branch.
 
 
