@@ -311,7 +311,8 @@ else:
     if "Integration with Existing Systems" in desired_features:
         azure_count += 1
    # Final Count
-  if azure_count > aws_count and azure_count > gcp_count:
+ # Make sure that this line matches the outer indentation level
+if azure_count > aws_count and azure_count > gcp_count:
     final_recommendation = "[Microsoft Azure](https://azure.microsoft.com/)"
     final_reason = "Microsoft Azure is recommended due to its strong focus on compliance and security features, making it an ideal choice for organisations in regulated industries. Additionally, Azure excels in integrating with existing Microsoft infrastructure, offering seamless hybrid cloud capabilities."
 elif aws_count > azure_count and aws_count > gcp_count:
@@ -327,6 +328,7 @@ else:
 # Display the final recommendation with links
 st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
 st.markdown(f"**Reason:** {final_reason}")
+
 
 
 
