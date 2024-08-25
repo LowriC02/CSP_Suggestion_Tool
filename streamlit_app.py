@@ -323,7 +323,7 @@ elif gcp_count > azure_count and gcp_count > aws_count:
     final_reason = "Google Cloud Platform (GCP) is recommended for its industry-leading artificial intelligence and machine learning capabilities, along with its focus on innovation. GCP offers cost-effective solutions and is especially suited for technology-driven organizations looking to leverage cutting-edge technology."
 else:
     final_recommendation = "More Data Needed."
-    final_reason = "Oh no! It appears you haven't provided us with enough data to give you a recommendation but fear not brave adventurer! Once you have gathered more data to provide us with, we can once again help you begin your cloud migration journey."
+    final_reason = "Oh no! It appears you haven't provided us with enough data to give you a recommendation but fear not brave adventurer! Once you have gathered more data to provide us with, we can once again help you begin your cloud migration journey!."
 
 # Display the final recommendation with links
 st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
