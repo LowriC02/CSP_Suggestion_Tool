@@ -333,12 +333,13 @@ st.markdown(f"**Reason:** {final_reason}")
 
 
 
-
-    st.subheader("11. Are You Ready to Embark?")
-    ready = st.radio(
-        "Do you feel ready to embark on your tropical cloud migration adventure?",
-        ["Yes, I’m ready!", "I need to make some adjustments."]
-    )
+# Final Question
+st.subheader("11. Are You Ready to Embark?")
+ready = st.radio(
+    "Do you feel ready to embark on your tropical cloud migration adventure?",
+    ["Yes, I’m ready!", "I need to make some adjustments."]
+)
+    
 
     # Conditional message based on readiness
     if ready == "Yes, I’m ready!":
