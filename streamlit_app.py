@@ -312,7 +312,8 @@ else:
         azure_count += 1
 
     # Determine the CSP with the highest count
-   if azure_count > aws_count and azure_count > gcp_count:
+ # Make sure this line is correctly indented according to the previous block
+if azure_count > aws_count and azure_count > gcp_count:
     final_recommendation = "[Microsoft Azure](https://azure.microsoft.com/)"
     final_reason = "Microsoft Azure is recommended due to its strong focus on compliance and security features..."
 elif aws_count > azure_count and aws_count > gcp_count:
@@ -323,6 +324,8 @@ elif gcp_count > azure_count and gcp_count > aws_count:
     final_reason = "Google Cloud Platform (GCP) is recommended for its industry-leading AI and machine learning capabilities..."
 else:
     final_recommendation = "Based on your inputs, multiple CSPs could be a good fit."
+    final_reason = "Multiple cloud service providers could be suitable based on your criteria. Consider exploring each provider further to find the best match."
+
     # <---- Missing definition of `final_reason` in this branch.
 
 
