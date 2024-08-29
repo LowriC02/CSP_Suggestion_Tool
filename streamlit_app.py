@@ -1,13 +1,13 @@
 import streamlit as st
 
-# Disclaimer Checkbox
+# Disclaimer 
 st.sidebar.markdown("### Disclaimer")
 disclaimer_checked = st.sidebar.checkbox("I acknowledge that the following suggestions are only meant to suggest not advise.")
 
 if not disclaimer_checked:
     st.sidebar.warning("Please acknowledge the disclaimer to proceed with the tool.")
 else:
-    # Engaging App Introduction
+    # Introduction
     st.title("Welcome to the Cloud Adventure: Your CSP Suggestion Tool!")
 
     st.markdown("""
@@ -16,7 +16,7 @@ else:
     and find the perfect Cloud Service Provider (CSP) tailored to your needs. Ready to get started? Let's dive in! 🏝️
     """)
 
-    # Industry Type Input - Multiple Choice
+    # Industry Type 
     st.subheader("What industries does your company operate in?")
     industries = []
     if st.checkbox("Healthcare", key="industry_healthcare"):
@@ -36,7 +36,7 @@ else:
     if st.checkbox("Other", key="industry_other"):
         industries.append("Other")
 
-    # Location Input - Multiple Choice
+    # Location Input
     st.subheader("Where does your company operate?")
     locations = []
     if st.checkbox("Africa", key="location_africa"):
@@ -52,7 +52,7 @@ else:
     if st.checkbox("Australia", key="location_australia"):
         locations.append("Australia")
 
-    # Continuing the adventure with a new section
+    # New section
     st.header("⛅️ Mapping Your Cloud Terrain")
     st.markdown("""
     Time to map out where your company currently stands in its cloud journey. This will help us understand your starting point.
@@ -97,14 +97,14 @@ else:
     st.write(f"**Risk Appetite:** {risk_appetite}")
     st.write(f"**Cost Attitude:** {cost_attitude}")
 
-    # Introducing the next section
+    # Next section
     st.header("🏔️ Scaling the Cloud Peaks")
 
     st.markdown("""
     As we climb higher, let's identify the key assets and priorities that will guide us to the summit of your cloud strategy.
     """)
 
-    # Type of Assets - Checkboxes for multiple selections
+    # Type of Assets 
     assets = []
     st.subheader("5. What Types of Assets Do You Have on the Cloud?")
     if st.checkbox("Data Storage", key="asset_datastorage"):
@@ -118,7 +118,7 @@ else:
     if st.checkbox("Other", key="asset_other"):
         assets.append("Other")
 
-    # Priorities in Selecting a CSP - Checkboxes for multiple selections
+    # Priorities in Selecting a CSP 
     priorities = []
     st.subheader("6. What Are Your Top Priorities When Selecting a CSP?")
     if st.checkbox("Performance", key="priority_performance"):
@@ -143,14 +143,14 @@ else:
     st.write(f"**Assets on the Cloud:** {', '.join(assets) if assets else 'No assets selected.'}")
     st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
 
-    # Introducing the next section
+    # Next section
     st.header("🔐 Navigating the Security Jungle")
     st.markdown("""
     You're deep into the cloud adventure now, where security is key to surviving the wilds of the digital jungle. 
     Let’s uncover your company’s security preferences and map out the features you’re hunting for in a Cloud Service Provider (CSP).
     """)
 
-    # Security Preferences - Checkboxes for multiple selections
+    # Security Preferences
     security_preferences = []
     st.subheader("7. What Security Measures Are Most Important to You?")
     if st.checkbox("Advanced Encryption", key="security_encryption"):
@@ -166,7 +166,7 @@ else:
     if st.checkbox("Compliance with Industry Standards (e.g., GDPR, ISO 27001)", key="security_compliance"):
         security_preferences.append("Compliance with Industry Standards (e.g., GDPR, ISO 27001)")
 
-    # Desired Features in a CSP - Checkboxes for multiple selections
+    # Desired Features in a CSP 
     desired_features = []
     st.subheader("8. What Features Are You Looking For in a CSP?")
     if st.checkbox("High Availability and Uptime Guarantees", key="features_availability"):
@@ -189,7 +189,7 @@ else:
     st.write(f"**Security Measures:** {', '.join(security_preferences) if security_preferences else 'No security measures selected.'}")
     st.write(f"**Desired CSP Features:** {', '.join(desired_features) if desired_features else 'No features selected.'}")
 
-    # 🏝️ Wrapping Up Your Tropical Cloud Adventure
+    # Wrapping Up Tropical Cloud Adventure
     st.header("🏝️ Wrapping Up Your Tropical Cloud Adventure")
 
     st.markdown("""
@@ -211,7 +211,7 @@ else:
     st.markdown("### 🌩️ Cloud Companions")
     st.write(f"**Top Priorities in CSP Selection:** {', '.join(priorities) if priorities else 'No priorities selected.'}")
 
-    # Adjusted CSP Recommendation Based on Multiple Selections
+    # CSP Recommendation Based on Multiple Selections
     st.subheader("10. Our CSP Recommendation")
 
     # Initialise counters for each CSP
