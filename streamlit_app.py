@@ -322,11 +322,11 @@ else:
         final_recommendation = "[Google Cloud Platform (GCP)](https://cloud.google.com/)"
         final_reason = "Google Cloud Platform (GCP) is recommended for its industry-leading artificial intelligence and machine learning capabilities, along with its focus on innovation. GCP offers cost-effective solutions and is especially suited for technology-driven organizations looking to leverage cutting-edge technology."
     else:
-        final_recommendation = "More Data Needed."
+        final_recommendation = "More data is needed for you to begin ."
         final_reason = "Oh no! It appears you haven't provided us with enough data to give you a recommendation but fear not brave adventurer! Once you have gathered more data to provide us with, we can once again help you begin your cloud migration journey!"
 
     # Display the final recommendation with links
-    st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud journey.")
+    st.markdown(f"### 🌟 We recommend **{final_recommendation}** for your cloud migration journey.")
     st.markdown(f"**Reason:** {final_reason}")
 
     # Final Question
